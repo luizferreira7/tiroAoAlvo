@@ -1,5 +1,5 @@
 let titulo = document.createElement('h2');
-titulo.innerHTML = 'Tiro ao alvo'
+titulo.innerHTML = 'Tiro ao Alvo'
 titulo.style.display = 'grid'
 titulo.style.justifyContent = 'center'
 
