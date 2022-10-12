@@ -146,6 +146,14 @@ comandos.appendChild(btnStop)
 comandos.appendChild(btnStart)
 
 canvas.addEventListener('mousedown',function(event) {
+    verificaAcerto(event);
+});
+
+canvas.addEventListener('touchstart', function(event) {
+    verificaAcerto(event);
+});
+
+function verificaAcerto(event) {
     for (let circulo of circulos) {
         if (event.offsetX > (circulo.x - circulo.r) && 
             event.offsetX < (circulo.x + circulo.r) && 
@@ -157,7 +165,7 @@ canvas.addEventListener('mousedown',function(event) {
             circulos.splice(circulos.indexOf(circulo), 1);
         }
     }
-});
+}
 
 function criaCirculos() {
 	circulos = [];
