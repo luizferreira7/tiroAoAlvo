@@ -74,7 +74,6 @@ class Circulo {
         };
 
         this.update = function () {
-            console.log(this.dx)
             this.x += this.dx;
             this.y += this.dy;
             if (this.dx > 9 || this.dx < -9) {
@@ -146,19 +145,22 @@ comandos.appendChild(btnStop)
 comandos.appendChild(btnStart)
 
 canvas.addEventListener('mousedown',function(event) {
-    verificaAcerto(event);
+    verificaAcerto(event.offsetX, event.offsetY);
 });
 
 canvas.addEventListener('touchstart', function(event) {
-    verificaAcerto(event);
+    let r = canvas.getBoundingClientRect();
+    currX = event.touches[0].clientX - r.left;
+    currY = event.touches[0].clientY - r.top;
+    verificaAcerto(currX, currY);
 });
 
-function verificaAcerto(event) {
+function verificaAcerto(x, y) {
     for (let circulo of circulos) {
-        if (event.offsetX > (circulo.x - circulo.r) && 
-            event.offsetX < (circulo.x + circulo.r) && 
-            event.offsetY > (circulo.y - circulo.r) && 
-            event.offsetY < (circulo.y + circulo.r)) 
+        if (x > (circulo.x - circulo.r) && 
+            x < (circulo.x + circulo.r) && 
+            y > (circulo.y - circulo.r) && 
+            y < (circulo.y + circulo.r)) 
         {
             pontuacao += 2;
             document.getElementById('pontuacao').innerHTML = 'Pontuação: ' + pontuacao;
