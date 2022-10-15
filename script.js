@@ -43,7 +43,7 @@ canvas.height = '500'
 canvas.style.justifySelf = 'center'
 canvas.style.border = '1px solid black'
 canvas.onclick = function() {
-    pontuacao -= pontuacao === 0 ? 0 : 1;
+    pontuacao -= 1;
     document.getElementById('pontuacao').innerHTML = 'Pontuação: ' + pontuacao;
 }
 var pen = canvas.getContext('2d');
@@ -122,6 +122,7 @@ btnStart.style.justifySelf = 'center'
 btnStart.style.borderRadius = '10%'
 btnStart.style.display = 'inline'
 btnStart.onclick = function() {
+    pontuacao = 0;
     document.getElementById('pontuacao').innerHTML = 'Pontuação: 0';
     numCirculos = Number.parseInt(document.getElementById('input').value);
     criaCirculos();
